@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Squash the Creeps (3D)", "Squash the Creeps (3D).csproj", "{70547A9A-4C76-4A5A-9A77-BD926EC28768}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70547A9A-4C76-4A5A-9A77-BD926EC28768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70547A9A-4C76-4A5A-9A77-BD926EC28768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70547A9A-4C76-4A5A-9A77-BD926EC28768}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{70547A9A-4C76-4A5A-9A77-BD926EC28768}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{70547A9A-4C76-4A5A-9A77-BD926EC28768}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{70547A9A-4C76-4A5A-9A77-BD926EC28768}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
