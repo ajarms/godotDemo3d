@@ -10,10 +10,15 @@ config_version=5
 
 [application]
 
-config/name="GodotDemo3d"
-config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/name="Squash the Creeps (3D)"
+config/features=PackedStringArray("4.3")
+config/icon="res://icon.png"
 
 [dotnet]
 
-project/assembly_name="GodotDemo3d"
+project/assembly_name="Squash the Creeps (3D)"
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/filters/msaa=3
