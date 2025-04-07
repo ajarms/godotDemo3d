@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Squash the Creeps (3D)"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.3", "C#")
 config/icon="res://icon.png"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=540
 
 [dotnet]
 
