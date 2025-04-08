@@ -29,6 +29,8 @@ MobScene = ExtResource("2_gv7n4")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_vusfc")
@@ -80,4 +82,5 @@ mesh = SubResource("CylinderMesh_8ldyd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 15)
 mesh = SubResource("CylinderMesh_8ldyd")
 
+[connection signal="Hit" from="Player" to="." method="OnPlayerHit"]
 [connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]

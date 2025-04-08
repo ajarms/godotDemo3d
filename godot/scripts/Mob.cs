@@ -9,6 +9,9 @@ public partial class Mob : CharacterBody3D
     [Export]
     public int MaxSpeed { get; set; } = 18;
 
+    [Signal]
+    public delegate void SquashedEventHandler();
+
     public override void _PhysicsProcess(double delta)
     {
         MoveAndSlide();
@@ -25,7 +28,14 @@ public partial class Mob : CharacterBody3D
         Velocity = Velocity.Rotated(Vector3.Up, Rotation.Y);
     }
 
+    public void Squash(){
+        // TODO emit event signal
+        QueueFree();
+    }
+
     private void OnVisibilityNotifierScreenExited(){
+        // signal for scoring etc, then the mob 'dies'
+        this.EmitSignal(SignalName.Squashed);
         QueueFree();
     }
 }
