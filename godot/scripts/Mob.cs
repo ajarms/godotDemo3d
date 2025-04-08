@@ -12,8 +12,7 @@ public partial class Mob : CharacterBody3D
     [Signal]
     public delegate void SquashedEventHandler();
 
-    public override void _PhysicsProcess(double delta)
-    {
+    public override void _PhysicsProcess(double delta){
         MoveAndSlide();
     }
 
@@ -29,13 +28,12 @@ public partial class Mob : CharacterBody3D
     }
 
     public void Squash(){
-        // TODO emit event signal
+        // signal for scoring etc, then the mob 'dies'
+        this.EmitSignal(SignalName.Squashed);
         QueueFree();
     }
 
     private void OnVisibilityNotifierScreenExited(){
-        // signal for scoring etc, then the mob 'dies'
-        this.EmitSignal(SignalName.Squashed);
         QueueFree();
     }
 }
