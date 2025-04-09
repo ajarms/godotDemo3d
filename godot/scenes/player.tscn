@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbt227wcvykpv"]
+[gd_scene load_steps=7 format=3 uid="uid://dbt227wcvykpv"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_toqca"]
 [ext_resource type="PackedScene" uid="uid://c3vak051ieyvh" path="res://art/player.glb" id="1_vxlwr"]
@@ -9,6 +9,17 @@ radius = 0.8
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2ov3j"]
 height = 0.2
 radius = 1.1
+
+[sub_resource type="Animation" id="Animation_wdo0b"]
+resource_name = "float"
+length = 1.2
+loop_mode = 1
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d4pwc"]
+_data = {
+"float": SubResource("Animation_wdo0b")
+}
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -31,5 +42,11 @@ monitorable = false
 
 [node name="CollisionShape" type="CollisionShape3D" parent="MobDetector"]
 shape = SubResource("CylinderShape3D_2ov3j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d4pwc")
+}
+autoplay = "float"
 
 [connection signal="body_entered" from="MobDetector" to="." method="OnMobDetectorBodyEntered"]
