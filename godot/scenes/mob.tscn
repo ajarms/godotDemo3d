@@ -1,10 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://c012s1qdnu4f5"]
+[gd_scene load_steps=6 format=3 uid="uid://c012s1qdnu4f5"]
 
 [ext_resource type="Script" path="res://scripts/Mob.cs" id="1_r7yx4"]
 [ext_resource type="PackedScene" uid="uid://bwa7rjm4qn0qh" path="res://art/mob.glb" id="2_acxs3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eek70"]
 size = Vector3(1.56024, 1, 2.15179)
+
+[sub_resource type="Animation" id="Animation_6td2n"]
+resource_name = "float"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.2),
+"transitions": PackedFloat32Array(0.535886, 2.21914, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.65, 0), Vector3(0, 0.24375, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Character:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5, 1.2),
+"transitions": PackedFloat32Array(0.535886, 0.420448, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.139626, 0, 0), Vector3(0.0174533, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_etxfv"]
+_data = {
+"float": SubResource("Animation_6td2n")
+}
 
 [node name="Mob" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -15,6 +50,7 @@ script = ExtResource("1_r7yx4")
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Character" parent="Pivot" instance=ExtResource("2_acxs3")]
+transform = Transform3D(1, 0, 0, 0, 0.999848, -0.0174524, 0, 0.0174524, 0.999848, 0, 0.24375, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0115051, 0.25, -0.0516052)
@@ -23,5 +59,10 @@ shape = SubResource("BoxShape3D_eek70")
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.367923, 0)
 aabb = AABB(-1.17477, -0.647215, -1.37792, 2.34954, 1.29443, 3.31736)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_etxfv")
+}
 
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="OnVisibilityNotifierScreenExited"]

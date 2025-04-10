@@ -42,6 +42,11 @@ public partial class Player : CharacterBody3D
             direction = direction.Normalized();
             // set the Basis--the basis of the node's transform--of the Pivot node to adjust the entire player tree
             this.GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction);
+
+            // if the player is moving, speed up the animation, otherwise return it to normal speed
+            GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 4;
+        } else {
+            GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = 1;
         }
 
         _targetVelocity.X = direction.X * this.Speed;
@@ -69,6 +74,10 @@ public partial class Player : CharacterBody3D
 
         Velocity = _targetVelocity;
         MoveAndSlide();
+
+        // use pivot to make character arc as it jumps
+        var pivot = GetNode<Node3D>("Pivot");
+        pivot.Rotation = new Vector3(Mathf.Pi / 6.0f * Velocity.Y / JumpImpulse, pivot.Rotation.Y, pivot.Rotation.Z);
     }
 
     private void Die(){

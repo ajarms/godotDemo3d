@@ -25,6 +25,9 @@ public partial class Mob : CharacterBody3D
         int randomSpeed = GD.RandRange(MinSpeed, MaxSpeed);
         Velocity = Vector3.Forward * randomSpeed;
         Velocity = Velocity.Rotated(Vector3.Up, Rotation.Y);
+
+        // set animation speed based on random mob speed
+        GetNode<AnimationPlayer>("AnimationPlayer").SpeedScale = randomSpeed / MaxSpeed;
     }
 
     public void Squash(){
